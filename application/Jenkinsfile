@@ -16,5 +16,12 @@ pipeline {
                 sh 'docker run -d -p 8085:80 --name my-app-container my-app:latest || true'
             }
         }
+
+        stage('Push to Docker Hub') {
+    steps {
+        sh 'docker tag my-app:latest santhosh3567/my-app:latest'
+        sh 'docker push santhosh3567/my-app:latest'
+    }
+}
     }
 }
