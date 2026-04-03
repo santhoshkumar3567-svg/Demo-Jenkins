@@ -6,10 +6,10 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                sh 'docker build -t my-app:latest .'
+                 sh 'docker build -t my-app:latest application/'
             }
         }
-
+    
         stage('Run Container') {
             steps {
                 echo 'Running container...'
