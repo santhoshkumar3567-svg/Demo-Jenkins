@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone Code') {
+            steps {
+                echo 'Cloning repository...'
+                git 'https://github.com/santhoshkumar3567-svg/devops-challenge.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker image...'
+                sh 'docker build -t my-app:latest .'
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                echo 'Running container...'
+                sh 'docker run -d -p 8085:8080 --name my-app-container my-app:latest || true'
+            }
+        }
+    }
+}
