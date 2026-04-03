@@ -3,13 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
-            steps {
-                echo 'Cloning repository...'
-                git 'https://github.com/santhoshkumar3567-svg/devops-challenge.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
@@ -20,7 +13,7 @@ pipeline {
         stage('Run Container') {
             steps {
                 echo 'Running container...'
-                sh 'docker run -d -p 8085:8080 --name my-app-container my-app:latest || true'
+                sh 'docker run -d -p 8085:80 --name my-app-container my-app:latest || true'
             }
         }
     }
